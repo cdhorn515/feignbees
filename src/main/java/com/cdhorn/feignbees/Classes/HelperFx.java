@@ -15,7 +15,7 @@ public class HelperFx {
                 .encoder(new JacksonEncoder())
                 .decoder(new JacksonDecoder())
                 .target(FeignInterface.class, "http://api.openweathermap.org");
-        WeatherResponse response = feign.weatherResponse(weatherAPI.getAPPID());
+        WeatherResponse response = feign.weatherResponse(zipCode, weatherAPI.getAPPID());
         return response;
     }
 }
