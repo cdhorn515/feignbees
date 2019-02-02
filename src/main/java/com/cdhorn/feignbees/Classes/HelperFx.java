@@ -3,8 +3,8 @@ package com.cdhorn.feignbees.Classes;
 import com.cdhorn.feignbees.Interfaces.FeignInterface;
 import com.cdhorn.feignbees.Models.WeatherAPI;
 import feign.Feign;
-import feign.jackson.JacksonDecoder;
-import feign.jackson.JacksonEncoder;
+import feign.gson.GsonDecoder;
+import feign.gson.GsonEncoder;
 
 public class HelperFx {
 
@@ -12,10 +12,12 @@ public class HelperFx {
 
     public WeatherResponse getZipCode(String zipCode) {
         FeignInterface feign = Feign.builder()
-                .encoder(new JacksonEncoder())
-                .decoder(new JacksonDecoder())
-                .target(FeignInterface.class, "http://api.openweathermap.org");
-        WeatherResponse response = feign.weatherResponse(zipCode, weatherAPI.getAPPID());
+                .encoder(new GsonEncoder())
+                .decoder(new GsonDecoder())
+                .target(FeignInterface.class, "http://api.openweathermap.org/data/2.5");
+//        WeatherResponse response = feign.weatherResponse(zipCode, weatherAPI.getAPPID());
+        WeatherResponse response = feign.weatherResponse();
+//        WeatherResponse response = feign.weatherResponse();
         return response;
     }
 }
