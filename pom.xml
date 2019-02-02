@@ -50,6 +50,12 @@
             <version>10.0.1</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.netflix.feign</groupId>
+            <artifactId>feign-okhttp</artifactId>
+            <version>8.18.0</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.netflix.feign/feign-core -->
         <!--<dependency>-->
             <!--<groupId>com.netflix.feign</groupId>-->
