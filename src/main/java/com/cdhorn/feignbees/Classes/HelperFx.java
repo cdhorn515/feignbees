@@ -11,6 +11,8 @@ public class HelperFx {
     WeatherAPI weatherAPI = new WeatherAPI();
 
     public WeatherResponse getZipCode(String zipCode) {
+        System.out.println("++++++HELPERFX+++++++++");
+        System.out.println(zipCode);
         FeignInterface feign = Feign.builder()
                 .encoder(new GsonEncoder())
                 .decoder(new GsonDecoder())

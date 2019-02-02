@@ -27,7 +27,7 @@ public class HomeController {
 //    }
 
     @RequestMapping(value = "/springfeign", method = RequestMethod.POST)
-    public String spring(@RequestParam("zip") String zip, Model model) throws Exception{
+    public ModelAndView spring(@RequestParam("zip") String zip, Model model) throws Exception{
         Location location = new Location();
         location.setZip(zip);
         model.addAttribute(zip);
@@ -39,17 +39,15 @@ public class HomeController {
         WeatherResponse response = helperFx.getZipCode(location.getZip());
 
 //        String city = response.getName();
-        float temperature = response.getMain().getTemperature();
+        float temperature = response.getTemperature();
         System.out.println(temperature);
         System.out.println(response.toString());
-//        model.addAttribute("city", city);
         model.addAttribute("temperature", temperature);
         ModelAndView modelAndView = new ModelAndView("results");
 //        modelAndView.addObject("city", city);
         modelAndView.addObject("temperature", temperature);
-//        modelAndView.addObject("shelterName", shelterName);
-//        modelAndView.addObject("shelterAddress", shelterAddress);
 
-        return "results";
+
+        return modelAndView;
     }
 }

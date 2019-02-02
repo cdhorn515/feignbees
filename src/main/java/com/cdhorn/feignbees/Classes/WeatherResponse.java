@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class WeatherResponse {
-
+    @JsonProperty("main")
     Main main;
     @JsonProperty("name")
     private String name;
 
-
+    @JsonProperty("main")
     public Main getMain() {
         return main;
     }
@@ -52,8 +52,12 @@ public class WeatherResponse {
                 "main=" + main +
                 ", name='" + name + '\'' +
                 ", additionalProperties=" + additionalProperties +
+                ", temperature=" + temperature +
                 '}';
     }
+
+    @JsonProperty("temp")
+    float temperature;
 
     @JsonProperty("temp")
     public float getTemperature() {
