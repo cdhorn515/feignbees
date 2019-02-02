@@ -41,9 +41,10 @@ public class WeatherResponse {
         this.name = name;
     }
 
-    public WeatherResponse(Main main) {
+    public WeatherResponse(Main main, String name, float temperature) {
         this.main = main;
-//        this.name = name;
+        this.name = name;
+        this.temperature = temperature;
     }
 
     @Override
