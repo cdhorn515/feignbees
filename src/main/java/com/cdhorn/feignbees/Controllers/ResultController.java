@@ -40,7 +40,7 @@ public class ResultController {
                 .target(FeignInterface.class, "http://api.openweathermap.org");
 
         try {
-            WeatherResponse response = feignInterface.weatherResponse(zip, apiInfo.getAPPID());
+            WeatherResponse response = feignInterface.getCity(zip, apiInfo.getAPPID());
             String city = response.getName();
             // request to get distance from user zip code to Washington, D.C.
             FeignInterface feignInterface1 = Feign.builder()
@@ -48,7 +48,7 @@ public class ResultController {
                     .encoder(new GsonEncoder())
                     .target(FeignInterface.class, "https://www.zipcodeapi.com");
 
-            ZipCodeResponse zipCodeResponse = feignInterface1.zipCodeResponse(apiInfo.getZC_APIKEY(),zip);
+            ZipCodeResponse zipCodeResponse = feignInterface1.getDistance(apiInfo.getZC_APIKEY(),zip);
             DecimalFormat df = new DecimalFormat(zipCodeResponse.decimalFormatStr);
             String distance = df.format(zipCodeResponse.getDistance());
 
