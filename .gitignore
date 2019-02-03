@@ -24,4 +24,4 @@
 /.nb-gradle/
 /build/
 
-src/main/java/com.cdhorn.feignbees/Models/ApiInformation
+src/main/java/com/cdhorn/feignbees/Models/ApiInformation.java
