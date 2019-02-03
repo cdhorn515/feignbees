@@ -48,7 +48,7 @@ public class ResultController {
                     .encoder(new GsonEncoder())
                     .target(FeignInterface.class, "https://www.zipcodeapi.com");
 
-            ZipCodeResponse zipCodeResponse = feignInterface1.zipCodeResponse(zip, apiInfo.getZC_APIKEY());
+            ZipCodeResponse zipCodeResponse = feignInterface1.zipCodeResponse(apiInfo.getZC_APIKEY(),zip);
             DecimalFormat df = new DecimalFormat(zipCodeResponse.decimalFormatStr);
             String distance = df.format(zipCodeResponse.getDistance());
 
@@ -59,11 +59,11 @@ public class ResultController {
             return modelAndView;
         } catch (Exception e) {
             e.printStackTrace();
-            ModelAndView mav = new ModelAndView("home");
-            model.addAttribute("error", "Uh oh, something went wrong, please try again!");
-            return mav;
-        }
 
+        }
+        ModelAndView mav = new ModelAndView("home");
+        model.addAttribute("error", "That doesn't seem to be a US zip code, please try again!");
+        return mav;
     }
 
 }

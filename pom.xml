@@ -11,6 +11,8 @@
     <groupId>com.cdhorn</groupId>
     <artifactId>feignbees</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
     <name>feignbees</name>
     <description>Demo project for Spring Boot</description>
 
@@ -34,14 +36,11 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>2.1.0.RELEASE</version>
+            <groupId>com.netflix.feign</groupId>
+            <artifactId>feign-gson</artifactId>
+            <version>8.18.0</version>
         </dependency>
-
-
 
         <!-- https://mvnrepository.com/artifact/io.github.openfeign/feign-core -->
         <dependency>
@@ -50,39 +49,6 @@
             <version>10.0.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-okhttp</artifactId>
-            <version>8.18.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-xml</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-gson</artifactId>
-            <version>8.18.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign.form</groupId>
-            <artifactId>feign-form</artifactId>
-            <version>3.5.0</version>
-        </dependency>
-        <dependency>
-            <groupId>io.github.openfeign.cdi</groupId>
-            <artifactId>feign-cdi</artifactId>
-            <version>0.1.6</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/com.netflix.feign/feign-jackson -->
-        <dependency>
-            <groupId>com.netflix.feign</groupId>
-            <artifactId>feign-jackson</artifactId>
-            <version>8.18.0</version>
-        </dependency>
     </dependencies>
 
     <build>
