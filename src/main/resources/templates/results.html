@@ -8,6 +8,8 @@
 
 <body>
 
-<h3>The current temperature is: </h3><span th:text="${temperature}"></span>
+<h3 th:inline="text">You entered a zip code for: [[${city}]]</h3>
+
+<p th:inline="text">The distance between [[${city}]] and Washington D.C. is: [[${distance}]] miles</p>
 </body>
 </html>

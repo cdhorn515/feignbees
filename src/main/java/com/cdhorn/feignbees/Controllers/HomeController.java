@@ -1,16 +1,14 @@
 package com.cdhorn.feignbees.Controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletResponse;
-
 @Controller
 public class HomeController {
-
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView displayHome() {
@@ -19,16 +17,20 @@ public class HomeController {
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
-    public String addZip(@RequestParam("zip") String zip, HttpServletResponse httpServletResponse) throws Exception {
-        System.out.println("POST FROM FORM");
-        System.out.println(zip);
-        if (zip != null) {
-            httpServletResponse.sendRedirect("/springfeign/" + zip);
-            return null;
+    public String addZip(@RequestParam("zip") String zip, Model model) throws Exception {
+
+        try{
+            // check that string is not empty and has at least 5 digits
+            if ((zip != null) && (zip.length() >= 5) && (zip.matches("-?\\d+(.\\d+)?"))) {
+                String zipTrimmed = zip.substring(0, 5);
+
+                return "redirect:/springfeign/" +zipTrimmed;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return "hello, you didn't enter a zip code did you?";
-
+        model.addAttribute("error", "Make sure you enter a valid zip code");
+        return "home";
     }
-
 
 }

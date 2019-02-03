@@ -1,25 +1,18 @@
 package com.cdhorn.feignbees.Interfaces;
 
-import com.cdhorn.feignbees.Classes.Main;
-import com.cdhorn.feignbees.Classes.WeatherResponse;
+import com.cdhorn.feignbees.Models.WeatherResponse;
+import com.cdhorn.feignbees.Models.ZipCodeResponse;
 import feign.Param;
 import feign.RequestLine;
-import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.PathVariable;
 
-@FeignClient
+
 public interface FeignInterface {
 
-    @RequestLine(value = "GET /weather?units=imperial&zip=22314&APPID={key}")
-//    WeatherResponse weatherResponse();
-    WeatherResponse weatherResponse(@Param("key") String key);
+    @RequestLine(value = "GET /data/2.5/weather?zip={zip}&APPID={key}")
+    WeatherResponse weatherResponse(@Param(value = "zip") String zip, @Param("key") String key);
 
-    @RequestLine(value = "GET /weather?units=imperial&zip={zip},us&APPID={key}")
-//    WeatherResponse weatherResponse();
-    Main mainResponse(@PathVariable(value = "zip") String zip, @Param("key") String key);
-
-//    @RequestLine(value = "api/trigger/us.33109/")
+    @RequestLine(value = "GET /rest/{clientKey}/distance.json/{zipcode}/20001/mile")
+    ZipCodeResponse zipCodeResponse(@Param("clientKey") String clientKey, @Param(value = "zipcode") String zipcode);
 }
-//    @RequestLine("GET /data/2.5/weather?units=imperial&zip=22314,us&APPID={key}")
-//    @Headers("Content-Type: application/json")
+
 
